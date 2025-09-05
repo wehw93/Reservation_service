@@ -56,13 +56,13 @@ public class ReservationController {
         var updated = reservationService.UpdateReservation(id,reservationToUpdate);
         return ResponseEntity.ok(updated);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/cancel")
     public ResponseEntity<Reservation> DeleteReservation(
             @PathVariable("id") Long id
     ){
         log.info("Deleted reservation id = {}" ,id);
         try {
-            reservationService.DeleteReservation(id);
+            reservationService.CancelReservation(id);
             return ResponseEntity.ok().build();
         }catch (NoSuchElementException e){
             return ResponseEntity.notFound().build();
