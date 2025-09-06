@@ -64,7 +64,7 @@ public class ReservationController {
             @PathVariable("id") Long id
     ){
         log.info("Deleted reservation id = {}" ,id);
-
+        reservationService.CancelReservation(id);
         return ResponseEntity.ok().build();
 
     }
